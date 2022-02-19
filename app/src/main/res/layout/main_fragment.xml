@@ -5,13 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp"
     tools:context=".ui.main.MainFragment">
 
     <ImageView
         android:id="@+id/store_logo"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:contentDescription="store logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -21,8 +20,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/overlock"
         android:lines="1"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@+id/store_logo"
@@ -33,9 +34,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/overlock"
         android:textColor="#757575"
         android:textSize="12sp"
+        android:layout_marginTop="10dp"
         app:layout_constraintLeft_toRightOf="@+id/store_logo"
         app:layout_constraintTop_toBottomOf="@id/store_name" />
 
@@ -43,8 +45,11 @@
         android:id="@+id/proceed_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/overlock"
         android:text="proceed"
+        android:textAllCaps="false"
+        android:backgroundTint="#13D169"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="5dp" />
 

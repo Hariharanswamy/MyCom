@@ -1,45 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:background="@null"
+    android:elevation="2dp"
+    android:outlineProvider="bounds"
+    android:padding="2dp">
 
     <ImageView
         android:id="@+id/product_logo"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/product_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/overlock"
         android:paddingLeft="7dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintLeft_toRightOf="@id/product_logo"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@tools:sample/lorem[3]" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/product_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/overlock"
         android:paddingLeft="7dp"
+        android:textColor="#757575"
+        android:textSize="12sp"
         app:layout_constraintLeft_toRightOf="@id/product_logo"
-        app:layout_constraintTop_toBottomOf="@id/product_name"
-        tools:text="@tools:sample/lorem[4]" />
+        app:layout_constraintTop_toBottomOf="@id/product_name" />
 
     <TextView
         android:id="@+id/product_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/overlock"
         android:paddingLeft="7dp"
+        android:textColor="#757575"
+        android:textSize="12sp"
         app:layout_constraintLeft_toRightOf="@id/product_logo"
-        app:layout_constraintTop_toBottomOf="@id/product_quantity"
-        tools:text="@tools:sample/lorem[2]" />
+        app:layout_constraintTop_toBottomOf="@id/product_quantity" />
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -47,13 +55,17 @@
         android:layout_marginEnd="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/product_price">
+        app:layout_constraintTop_toBottomOf="@id/product_name">
 
         <Button
             android:id="@+id/add_button"
-            android:text="Add"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:backgroundTint="#13D169"
+            android:fontFamily="@font/overlock"
+            android:text="Add"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,7 @@ package com.hariharan.mycom.data
 
 import com.google.gson.annotations.SerializedName
 
-data class ProductList(
+data class ProductInfo(
 
     @SerializedName("name") var name: String? = "",
     @SerializedName("photo_url") var photoUrl: String? = "",

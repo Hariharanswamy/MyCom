@@ -8,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.hariharan.mycom.data.ProductInfo
 import com.hariharan.mycom.data.StoreInfo
 import com.hariharan.mycom.databinding.MainFragmentBinding
 
@@ -33,19 +35,27 @@ class MainFragment : Fragment() {
         }
     }
 
+    private val productListObserver = Observer<List<ProductInfo>> { productList ->
+        val adapter: ProductAdapter = ProductAdapter(productList)
+        binding.productsList.adapter = adapter
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = MainFragmentBinding.inflate(inflater)
-        return binding.root;
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.getStoreInfo()
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.getStoreInfoLD().observe(viewLifecycleOwner, storeInfoObserver)
+        viewModel.getProductListLD().observe(viewLifecycleOwner, productListObserver)
+        viewModel.getStoreInfo()
+        viewModel.getProductList()
+        binding.productsList.layoutManager = LinearLayoutManager(activity)
     }
 
 }
