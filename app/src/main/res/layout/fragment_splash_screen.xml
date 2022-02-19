@@ -11,6 +11,7 @@
         android:id="@+id/logo"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="150dp"
+        android:contentDescription="@string/app_name"
         android:background="@drawable/ic_screen_icon"
         android:layout_width="match_parent"
         android:layout_height="250dp"/>
@@ -21,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/overlock"
-        android:text="Shop Your Daily\n Necessary"
+        android:text="@string/shop_your_daily_n_necessary"
         android:textAlignment="center"
         android:textColor="#13D169"
         android:textSize="30sp"
@@ -37,7 +38,7 @@
         android:layout_marginTop="50dp"
         android:fontFamily="@font/overlock"
         android:backgroundTint="#13D169"
-        android:text="Get Started"
+        android:text="@string/get_started"
         android:textAllCaps="false"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/welcome_text" />

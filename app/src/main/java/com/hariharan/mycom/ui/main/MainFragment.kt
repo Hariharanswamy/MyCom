@@ -21,6 +21,9 @@ import com.hariharan.mycom.databinding.MainFragmentBinding
 import com.hariharan.mycom.ui.ProductAdapter
 import java.lang.reflect.Type
 
+/**
+ * Screen which displays the store and product information.
+ */
 class MainFragment : Fragment() {
 
     companion object {
@@ -69,8 +72,10 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.getStoreInfoLD().observe(viewLifecycleOwner, storeInfoObserver)
         viewModel.getProductListLD().observe(viewLifecycleOwner, productListObserver)
+
         viewModel.getStoreInfo()
         viewModel.getProductList()
+
         binding.productsList.layoutManager = LinearLayoutManager(activity)
         binding.proceedButton.setOnClickListener(View.OnClickListener {
             if (selectedProducts.isNotEmpty()) {
@@ -79,7 +84,7 @@ class MainFragment : Fragment() {
                 val nav = MainFragmentDirections.mainOrder(gson)
                 findNavController().navigate(nav)
             } else {
-                Toast.makeText(activity, "Add any product to cart to proceed", Toast.LENGTH_SHORT)
+                Toast.makeText(activity, R.string.product_screen_toast, Toast.LENGTH_SHORT)
                     .show()
             }
         })

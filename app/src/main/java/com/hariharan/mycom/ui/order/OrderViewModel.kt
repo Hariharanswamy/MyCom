@@ -5,9 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hariharan.mycom.data.DataRepository
 import com.hariharan.mycom.data.model.ProductInfo
-import com.hariharan.mycom.data.model.StoreInfo
 import kotlinx.coroutines.launch
 
+/**
+ * View model for order fragment
+ */
 class OrderViewModel : ViewModel() {
 
     private val orderStatus: MutableLiveData<String>

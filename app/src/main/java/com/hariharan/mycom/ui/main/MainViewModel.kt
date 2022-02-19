@@ -1,7 +1,5 @@
 package com.hariharan.mycom.ui.main
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,6 +8,9 @@ import com.hariharan.mycom.data.model.ProductInfo
 import com.hariharan.mycom.data.model.StoreInfo
 import kotlinx.coroutines.launch
 
+/**
+ * View model for main fragment
+ */
 class MainViewModel : ViewModel() {
 
     private val storeInfo: MutableLiveData<StoreInfo>

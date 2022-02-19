@@ -14,6 +14,9 @@ import androidx.navigation.fragment.findNavController
 import com.hariharan.mycom.R
 import com.hariharan.mycom.databinding.FragmentSplashScreenBinding
 
+/**
+ * Screen to display initial screen.
+ */
 class SplashScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentSplashScreenBinding
@@ -21,23 +24,23 @@ class SplashScreenFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSplashScreenBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
-        binding.getStarted.setOnClickListener(View.OnClickListener {
-            if(isNetworkAvailable()) {
+        binding.getStarted.setOnClickListener {
+            if (isNetworkAvailable()) {
                 findNavController().navigate(R.id.splash_home)
             } else {
-                Toast.makeText(context, "No internet connection", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.no_internet, Toast.LENGTH_SHORT).show()
             }
-        })
+        }
     }
 
-    fun isNetworkAvailable(): Boolean {
+    private fun isNetworkAvailable(): Boolean {
         val connectivityManager =
             context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {

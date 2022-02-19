@@ -12,7 +12,14 @@ import com.bumptech.glide.Glide
 import com.hariharan.mycom.R
 import com.hariharan.mycom.data.model.ProductInfo
 
-class ProductAdapter(private val productList: List<ProductInfo>, val clickListener: ItemClickListener, val orderSummary: Boolean) :
+/**
+ * Adapter to show product list.
+ */
+class ProductAdapter(
+    private val productList: List<ProductInfo>,
+    private val clickListener: ItemClickListener,
+    private val orderSummary: Boolean
+) :
     RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     private lateinit var context: Context
@@ -38,7 +45,7 @@ class ProductAdapter(private val productList: List<ProductInfo>, val clickListen
         holder.productName.text = productInfo.name
         holder.productQuantity.text = productInfo.quantity
         holder.productPrice.text = "Rs. " + productInfo.price
-        if(orderSummary) {
+        if (orderSummary) {
             holder.addButton.visibility = View.INVISIBLE
         } else {
             holder.addButton.visibility = View.VISIBLE
@@ -58,7 +65,7 @@ class ProductAdapter(private val productList: List<ProductInfo>, val clickListen
         val productName: TextView = itemView.findViewById(R.id.product_name)
         val productQuantity: TextView = itemView.findViewById(R.id.product_quantity)
         val productPrice: TextView = itemView.findViewById(R.id.product_price)
-        val addButton:Button = itemView.findViewById(R.id.add_button)
+        val addButton: Button = itemView.findViewById(R.id.add_button)
     }
 
     interface ItemClickListener {

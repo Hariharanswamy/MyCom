@@ -5,6 +5,9 @@ import android.os.Bundle
 import com.hariharan.mycom.ui.NavHostFragment
 import com.hariharan.mycom.ui.main.MainFragment
 
+/**
+ * Container Activity, holds all the fragments.
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -12,6 +12,7 @@
         android:id="@+id/product_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:contentDescription="@string/app_name"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/overlock"
-        android:paddingLeft="7dp"
+        android:paddingStart="7dp"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintLeft_toRightOf="@id/product_logo"
@@ -32,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/overlock"
-        android:paddingLeft="7dp"
+        android:paddingStart="7dp"
         android:textColor="#757575"
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/product_logo"
@@ -43,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/overlock"
-        android:paddingLeft="7dp"
+        android:paddingStart="7dp"
         android:textColor="#757575"
         android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/product_logo"
@@ -63,7 +64,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#13D169"
             android:fontFamily="@font/overlock"
-            android:text="Add"
+            android:text="@string/add"
             android:textAllCaps="false"
             android:textSize="20sp" />
 

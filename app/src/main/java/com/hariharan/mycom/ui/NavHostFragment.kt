@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import com.hariharan.mycom.R
 import com.hariharan.mycom.ui.main.MainFragment
 
+/**
+ * Navigation host default fragment
+ */
 class NavHostFragment : Fragment() {
 
     override fun onCreateView(

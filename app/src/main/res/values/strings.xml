@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">MyCom</string>
+    <string name="app_name">My Store</string>
+    <string name="shop_your_daily_n_necessary">Shop Your Daily\n Necessary</string>
+    <string name="get_started">Get Started</string>
+    <string name="success">Success !!</string>
+    <string name="order_success_message">Your order has been placed\n and is being processed.</string>
+    <string name="got_it">Got it!</string>
+    <string name="proceed">Proceed</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="total_bill">Total bill :</string>
+    <string name="address_for_delivery">Address for delivery</string>
+    <string name="complete_address_including_landmark">Complete address including landmark</string>
+    <string name="confirm_order">Confirm Order</string>
+    <string name="add">Add</string>
+    <string name="product_screen_toast">Add any product to cart to proceed"</string>
+    <string name="enter_address">Enter address to proceed.</string>
+    <string name="no_internet">No internet connection</string>
 </resources>

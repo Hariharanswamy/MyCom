@@ -10,13 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <ImageView
             android:id="@+id/back_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:contentDescription="@string/app_name"
             android:src="@drawable/ic_arrow_back"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/overlock"
             android:lines="1"
-            android:text="Order Summary"
+            android:text="@string/order_summary"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/overlock"
-            android:text="Total bill :"
+            android:text="@string/total_bill"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -62,9 +62,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:fontFamily="@font/overlock"
-            android:text="Rs"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintRight_toRightOf="parent"
@@ -77,7 +76,7 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/overlock"
             android:lines="1"
-            android:text="Address for delivery"
+            android:text="@string/address_for_delivery"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintTop_toBottomOf="@id/total_bill" />
@@ -87,7 +86,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/overlock"
-            android:hint="Complete address including landmark"
+            android:hint="@string/complete_address_including_landmark"
+            android:inputType="text"
             android:lines="3"
             android:padding="5dp"
             app:layout_constraintTop_toBottomOf="@id/address_label" />
@@ -100,7 +100,7 @@
             android:layout_marginRight="5dp"
             android:backgroundTint="#13D169"
             android:fontFamily="@font/overlock"
-            android:text="Confirm Order"
+            android:text="@string/confirm_order"
             android:textAllCaps="false"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@id/address_text" />
