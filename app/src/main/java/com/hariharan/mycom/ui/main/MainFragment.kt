@@ -1,18 +1,24 @@
 package com.hariharan.mycom.ui.main
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.hariharan.mycom.data.ProductInfo
 import com.hariharan.mycom.data.StoreInfo
 import com.hariharan.mycom.databinding.MainFragmentBinding
+import com.hariharan.mycom.ui.ProductAdapter
+import java.lang.reflect.Type
 
 class MainFragment : Fragment() {
 
@@ -24,10 +30,12 @@ class MainFragment : Fragment() {
 
     private lateinit var binding: MainFragmentBinding
 
+    private var selectedProducts: List<ProductInfo> = emptyList()
+
     private val storeInfoObserver = Observer<StoreInfo> { storeInfo ->
         Log.i("Store info", storeInfo.toString())
         binding.storeName.text = storeInfo.name
-        binding.storeAddress.text = storeInfo.address1 + "\n" +storeInfo.address2 + storeInfo.city
+        binding.storeAddress.text = storeInfo.address1 + "\n" + storeInfo.address2 + storeInfo.city
         if (storeInfo.logo !== null) {
             Glide.with(this)
                 .load(storeInfo.logo)
@@ -36,7 +44,13 @@ class MainFragment : Fragment() {
     }
 
     private val productListObserver = Observer<List<ProductInfo>> { productList ->
-        val adapter: ProductAdapter = ProductAdapter(productList)
+        val adapter: ProductAdapter =
+            ProductAdapter(productList, object : ProductAdapter.ItemClickListener {
+                override fun onItemAdd(position: Int) {
+                    selectedProducts = selectedProducts + productList[position]
+                }
+
+            }, false)
         binding.productsList.adapter = adapter
     }
 
@@ -56,6 +70,16 @@ class MainFragment : Fragment() {
         viewModel.getStoreInfo()
         viewModel.getProductList()
         binding.productsList.layoutManager = LinearLayoutManager(activity)
+        binding.proceedButton.setOnClickListener(View.OnClickListener {
+            if (selectedProducts.isNotEmpty()) {
+                val listType: Type = object : TypeToken<List<ProductInfo?>?>() {}.getType()
+                val gson = Gson().toJson(selectedProducts, listType )
+                val nav = MainFragmentDirections.mainOrder(gson)
+                findNavController().navigate(nav)
+            } else {
+                Toast.makeText(activity, "Add any product to cart to proceed", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        })
     }
-
 }
