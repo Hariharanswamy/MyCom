@@ -14,8 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.hariharan.mycom.data.ProductInfo
-import com.hariharan.mycom.data.StoreInfo
+import com.hariharan.mycom.R
+import com.hariharan.mycom.data.model.ProductInfo
+import com.hariharan.mycom.data.model.StoreInfo
 import com.hariharan.mycom.databinding.MainFragmentBinding
 import com.hariharan.mycom.ui.ProductAdapter
 import java.lang.reflect.Type
@@ -39,6 +40,7 @@ class MainFragment : Fragment() {
         if (storeInfo.logo !== null) {
             Glide.with(this)
                 .load(storeInfo.logo)
+                .placeholder(R.drawable.placeholder)
                 .into(binding.storeLogo)
         }
     }

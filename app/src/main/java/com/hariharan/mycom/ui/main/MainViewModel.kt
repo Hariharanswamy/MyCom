@@ -3,22 +3,20 @@ package com.hariharan.mycom.ui.main
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hariharan.mycom.data.DataRepository
-import com.hariharan.mycom.data.FileUtil
-import com.hariharan.mycom.data.ProductInfo
-import com.hariharan.mycom.data.StoreInfo
+import com.hariharan.mycom.data.model.ProductInfo
+import com.hariharan.mycom.data.model.StoreInfo
 import kotlinx.coroutines.launch
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
+class MainViewModel : ViewModel() {
 
     private val storeInfo: MutableLiveData<StoreInfo>
     private val productInfo: MutableLiveData<List<ProductInfo>>
-    private val repository: DataRepository
+    private val repository: DataRepository = DataRepository()
 
     init {
-        val fileUtil = FileUtil(application)
-        repository = DataRepository(fileUtil)
         storeInfo = repository.storeInfoLiveData
         productInfo = repository.productInfoLiveData
     }

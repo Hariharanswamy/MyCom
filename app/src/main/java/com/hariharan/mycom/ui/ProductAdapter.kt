@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hariharan.mycom.R
-import com.hariharan.mycom.data.ProductInfo
+import com.hariharan.mycom.data.model.ProductInfo
 
 class ProductAdapter(private val productList: List<ProductInfo>, val clickListener: ItemClickListener, val orderSummary: Boolean) :
     RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
@@ -29,6 +29,7 @@ class ProductAdapter(private val productList: List<ProductInfo>, val clickListen
         if (productInfo.photoUrl !== null) {
             Glide.with(context)
                 .load(productInfo.photoUrl)
+                .placeholder(R.drawable.placeholder)
                 .into(holder.productLogo)
         } else {
             Glide.with(context).clear(holder.productLogo)

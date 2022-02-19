@@ -1,4 +1,4 @@
-package com.hariharan.mycom.data
+package com.hariharan.mycom.data.model
 
 import com.google.gson.annotations.SerializedName
 
