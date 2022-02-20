@@ -1,7 +1,8 @@
 package com.hariharan.mycom.ui.main
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hariharan.mycom.data.DataRepository
 import com.hariharan.mycom.data.model.ProductInfo
@@ -11,11 +12,11 @@ import kotlinx.coroutines.launch
 /**
  * View model for main fragment
  */
-class MainViewModel : ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val storeInfo: MutableLiveData<StoreInfo>
     private val productInfo: MutableLiveData<List<ProductInfo>>
-    private val repository: DataRepository = DataRepository()
+    private val repository: DataRepository = DataRepository(application.applicationContext)
 
     init {
         storeInfo = repository.storeInfoLiveData

@@ -1,15 +1,19 @@
 package com.hariharan.mycom.data
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.hariharan.mycom.data.model.ProductInfo
 import com.hariharan.mycom.data.model.StoreInfo
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.File
+import java.io.IOException
 import java.lang.reflect.Type
 
-class DataRepository {
+class DataRepository(private val context: Context) {
 
     val storeInfoLiveData: MutableLiveData<StoreInfo> = MutableLiveData<StoreInfo>()
 
@@ -41,9 +45,17 @@ class DataRepository {
     }
 
     suspend fun sendProductList(productInfo: List<ProductInfo>) {
-        val productListApi = getRetrofitInstance().create(OrderApi::class.java)
-        val response = productListApi.uploadProductList(productInfo)
-        Log.i("info", "Product Response " + response)
+        try {
+            val listType: Type = object : TypeToken<List<ProductInfo?>?>() {}.getType()
+            val gson = Gson().toJson(productInfo, listType )
+            val file = File(context.filesDir, "OrderSummary.json")
+            file.createNewFile()
+            file.appendText(gson)
+        } catch (e: IOException) {
+            e.printStackTrace()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
         uploadProductsLiveData.value = "success"
     }
 
