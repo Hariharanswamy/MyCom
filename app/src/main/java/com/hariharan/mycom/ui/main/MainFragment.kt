@@ -19,6 +19,7 @@ import com.hariharan.mycom.data.model.ProductInfo
 import com.hariharan.mycom.data.model.StoreInfo
 import com.hariharan.mycom.databinding.MainFragmentBinding
 import com.hariharan.mycom.ui.ProductAdapter
+import com.hariharan.mycom.ui.progress.ProgressDialogFragment
 import java.lang.reflect.Type
 
 /**
@@ -36,6 +37,8 @@ class MainFragment : Fragment() {
 
     private var selectedProducts: List<ProductInfo> = emptyList()
 
+    private var progressDialogFragment = ProgressDialogFragment()
+
     private val storeInfoObserver = Observer<StoreInfo> { storeInfo ->
         Log.i("Store info", storeInfo.toString())
         binding.storeName.text = storeInfo.name
@@ -49,6 +52,7 @@ class MainFragment : Fragment() {
     }
 
     private val productListObserver = Observer<List<ProductInfo>> { productList ->
+        progressDialogFragment.dismiss()
         val adapter: ProductAdapter =
             ProductAdapter(productList, object : ProductAdapter.ItemClickListener {
                 override fun onItemAdd(position: Int) {
@@ -72,6 +76,7 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.getStoreInfoLD().observe(viewLifecycleOwner, storeInfoObserver)
         viewModel.getProductListLD().observe(viewLifecycleOwner, productListObserver)
+        progressDialogFragment.show(parentFragmentManager, "ProgressDialog")
 
         viewModel.getStoreInfo()
         viewModel.getProductList()

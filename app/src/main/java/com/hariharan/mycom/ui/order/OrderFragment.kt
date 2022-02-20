@@ -1,6 +1,7 @@
 package com.hariharan.mycom.ui.order
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.hariharan.mycom.R
 import com.hariharan.mycom.data.model.ProductInfo
 import com.hariharan.mycom.databinding.OrderFragmentBinding
 import com.hariharan.mycom.ui.ProductAdapter
+import com.hariharan.mycom.ui.progress.ProgressDialogFragment
 import java.lang.reflect.Type
 
 /**
@@ -32,10 +34,17 @@ class OrderFragment : Fragment() {
 
     private lateinit var binding: OrderFragmentBinding
 
+    private var progressDialogFragment = ProgressDialogFragment()
+
     private val args: OrderFragmentArgs by navArgs()
 
-    private val orderSummaryObserver = Observer<String> { str ->
-        findNavController().navigate(R.id.order_success)
+    val handler = Handler()
+
+    private val orderSummaryObserver = Observer<String> {
+        handler.postDelayed({
+            progressDialogFragment.dismiss()
+            findNavController().navigate(R.id.order_success)
+        }, 5000)
     }
 
     override fun onCreateView(
@@ -61,11 +70,9 @@ class OrderFragment : Fragment() {
         }
         binding.totalBill.text = "Rs. " + orderAmount
 
-        binding.backButton.setOnClickListener {
-            findNavController().popBackStack()
-        }
         binding.proceedButton.setOnClickListener {
             if (binding.addressText.text.isNotEmpty()) {
+                progressDialogFragment.show(parentFragmentManager, "ProgressDialog")
                 viewModel.sendProductList(selectedList)
             } else {
                 Toast.makeText(activity, R.string.enter_address, Toast.LENGTH_SHORT).show()
@@ -76,7 +83,6 @@ class OrderFragment : Fragment() {
             ProductAdapter(selectedList, object : ProductAdapter.ItemClickListener {
                 override fun onItemAdd(position: Int) {
                 }
-
             }, true)
         binding.productsList.adapter = adapter
     }

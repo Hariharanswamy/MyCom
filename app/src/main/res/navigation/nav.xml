@@ -43,10 +43,6 @@
             android:id="@+id/order_success"
             app:destination="@id/successFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
-        <action
-            android:id="@+id/action_orderFragment_pop"
-            app:popUpTo="@id/mainFragment"
-            app:popUpToInclusive="true" />
         <argument
             android:name="productList"
             app:argType="string" />

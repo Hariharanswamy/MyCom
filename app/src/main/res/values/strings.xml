@@ -15,4 +15,5 @@
     <string name="product_screen_toast">Add any product to cart to proceed"</string>
     <string name="enter_address">Enter address to proceed.</string>
     <string name="no_internet">No internet connection</string>
+    <string name="please_wait">Please wait..</string>
 </resources>

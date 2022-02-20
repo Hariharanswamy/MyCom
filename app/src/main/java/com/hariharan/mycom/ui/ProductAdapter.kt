@@ -52,6 +52,7 @@ class ProductAdapter(
             holder.addButton.setOnClickListener(View.OnClickListener {
                 clickListener.onItemAdd(position)
                 holder.addButton.isEnabled = false
+                holder.addButton.text = "Added"
             })
         }
     }
